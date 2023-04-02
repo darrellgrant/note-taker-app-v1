@@ -8,11 +8,12 @@
   </head>
   <body>
     <div class="user_post">
-      <form action="post">
+      <form method="POST">
         <input
           type="text"
           name="post_title"
           id="post_title"
+
           placeholder="Post Title"
         /><br /><br />
         <textarea
@@ -20,14 +21,15 @@
           id="post_content"
           cols="35"
           rows="10"
-        ></textarea
-        ><br /><br />
+        ></textarea>
+
+        <br /><br />
         <input type="text" name="post_tag" placeholder="tag" id="post_tag" /><input type="button" value="Add Tag" />
         </div>
         <div id="post_tag_list">
           tags
           <ul></ul>
-          
+
         <br /><br />
         <input type="submit" name="submit" value="Submit Form" id="submit" />
       </form>
