@@ -1,0 +1,19 @@
+The cat command can be used to
+1. Create a file just like the "touch" command BUT the cat command can at the same time be
+used to write content to the file you are creating.
+cat >> somefile.txt [D[D[D[D[D[D[D[D[D[D[D[D[D[D[D[D[D[D[D[Dc[D            [example
+$ cat >> somefile.txt (hit enter)
+This is some text for somefile.txt (hit enter)
+{cntl D) to exit
+2. [A[A[A[C[C[C[C[[B[B[catfff[D[D[D[D[D[D([A[A[C[C[C[C[C[C[C[C[[C[3[C[B[B[D[D[D[D[D[Dtr[C[C[B[D[D[DRead a file in the terminal
+example
+$ cat somefile.txt (hit enter) 
+(the content of somefile.txt will appear in the terminal
+3. Merge content of files to an existing or non existing file
+example
+$ cat file1.txt file[D[D[D[D[D[D[D[D[D[D[D[D[D[D[C[C[C[C[C[C[C[C[Cfile1.txt >> file2.txt (hit enter) 
+(the content of file1.txt has been merged with file2.txt)
+( ">>" is called th redirection operator)[D[D[D[D[D[D[D[D[D[D[D[D[D[D[D[D[D[D[D[D[D[D[D[D[B[C[Ce   redirection operator)
+3.a Merge multiple files to a nonexisting file
+example
+$ file1.txt file2.txt > brandnewfile.txt (hit enter)
