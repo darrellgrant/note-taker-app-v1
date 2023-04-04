@@ -1,3 +1,2 @@
-This is file ONE
-file
-This is more content
+/c/xampp/htdocs/note-taker-app
+Sun, Apr  2, 2023 10:10:08 PM

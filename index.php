@@ -8,7 +8,7 @@
   </head>
   <body>
     <div class="user_post">
-      <form method="POST">
+      <form action="includes/process.php" method="POST">
         <input
           type="text"
           name="post_title"
