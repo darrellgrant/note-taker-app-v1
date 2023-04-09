@@ -1,38 +1,37 @@
 <?php
 session_start();
-$allowedTitleLimit = 60;
+//$allowedTitleLimit = 60;
 
-if (isset($_POST["submit"])) {
+if (isset($_POST["submit-btn"])) {
     //require database connection here***
+    $db_host = "localhost";
+    $db_user = "root";
+    $db_password = "Brainiac5";
+    $db_name = "login_site1";
+
+    $conn = mysqli_connect($db_host, $db_user, $db_password, $db_name);
 
     //sanitize input and store in php variables
-    $post_title = check_input($_POST["post_title"]);
-    $post_content = check_input($_POST["post_content"]);
-    $post_tag[] = check_input($_POST["post_tag"]);
+    $first_name = $_POST["first_name"];
+    $last_name = $_POST["last_name"];
+    $email = $_POST["email"];
+    $password = $_POST["password"];
 
     //check if variables are empty
-    if (empty($post_title) || empty($post_content)) {
-        header("Location: ../index.php?error=missing_input_data");
+    if (empty($first_name) || empty($last_name) || empty($email) || empty($password)) {
+        header("Location: ../register.php?error=missing_input_data");
         exit();
 
-        //check if post title is too long
-    } elseif (mb_strlen($post_title) > $allowedTitleLimit) {
-        header("Location: ../index.php?error=title_exceeds_limit");
-        exit();
     } else {
-        //store info into database
+        //store info in database
+        $sql_insert = "INSERT INTO users (first_name, last_name, email, password) VALUES ('$first_name', '$last_name', '$email', '$password');";
+        mysqli_query($conn, $sql_insert);
 
+        echo "SUCCESFUL REGISTRATION";
+        //send user to login page
     }
 
 } else {
     //if no info sent with submit...
-    header("Location: ..index.php?user_error");
+    header("Location: ../register.php?user_error");
 } //if isset $_POST end
-
-function check_input($data)
-{
-    $data = trim($data);
-    $data = stripslashes($data);
-    $data = htmlspecialchars($data);
-    return $data;
-}
