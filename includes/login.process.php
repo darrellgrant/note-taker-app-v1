@@ -29,14 +29,15 @@ if (isset($_POST["submit-btn"])) {
             echo "this is 1 " . $row['password'];
             echo "<br> and this is 2 " . $password;
             if ($row['password'] !== $password) {
-                echo "<b><br>THEY MATCH</b>";
+
                 header("Location: ../login.php?error=incorrect_password");
                 exit();
 
             } else {
-                echo "<b><br>THEY DO NOT MATCH!!!!!</b>";
+                $_SESSION['first_name'] = $row['first_name'];
+                //echo "<br>Greetings, <b> " . $_SESSION['first_name'] . " !";
 
-                header("Location: ../index.php?login=success!");
+                header("Location: ../profile.php?login=success!");
                 exit();
 
             }

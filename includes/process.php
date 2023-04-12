@@ -4,12 +4,7 @@ session_start();
 
 if (isset($_POST["submit-btn"])) {
     //require database connection here***
-    $db_host = "localhost";
-    $db_user = "root";
-    $db_password = "Brainiac5";
-    $db_name = "login_site1";
-
-    $conn = mysqli_connect($db_host, $db_user, $db_password, $db_name);
+    include 'dbconnect.php';
 
     //sanitize input and store in php variables
     $first_name = $_POST["first_name"];
@@ -22,6 +17,15 @@ if (isset($_POST["submit-btn"])) {
         header("Location: ../register.php?error=missing_input_data");
         exit();
 
+    }
+
+    $sql_query = "SELECT * FROM users where email = '$email';";
+    $result = mysqli_query($conn, $sql_query);
+    $resultCheck = mysqli_num_rows($result);
+    if ($resultCheck > 0) {
+        header("Location: ../register.php?error=email_already_taken");
+        exit();
+
     } else {
         //store info in database
         $sql_insert = "INSERT INTO users (first_name, last_name, email, password) VALUES ('$first_name', '$last_name', '$email', '$password');";
@@ -29,6 +33,8 @@ if (isset($_POST["submit-btn"])) {
 
         echo "SUCCESFUL REGISTRATION";
         //send user to login page
+        header("Location: ../login.php?SUCCESFUL_REGISTRATION");
+        exit();
     }
 
 } else {
