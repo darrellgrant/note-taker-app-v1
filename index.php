@@ -1,5 +1,9 @@
 <?php
 session_start();
+if (isset($_SESSION['text'])) {
+    echo $_SESSION['text'];
+    unset($_SESSION['text']);
+}
 
 ?>
 
@@ -36,7 +40,7 @@ session_start();
           <ul></ul>
 
         <br /><br />
-        <input type="submit" name="submit" value="Submit Form" id="submit" />
+        <input type="submit" name="submit-btn" value="Submit Form" id="submit" />
       </form>
       <!--end class user_post-->
     </div>
